@@ -18,7 +18,9 @@ resource "aws_launch_template" "jenkins_main-launch-template" {
   image_id      = data.aws_ami.ubuntu.id
   instance_type = var.instance-type
   key_name      = var.key_name
-  monitoring = true
+  monitoring {
+    enabled = true
+  }
   vpc_security_group_ids = var.security_group
 
   user_data = filebase64("jenkins-boot.sh")
