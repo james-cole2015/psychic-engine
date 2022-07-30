@@ -26,4 +26,3 @@ module "elastic-load-balancer" {
   subnet_id      = [module.networking.vpc.public_subnets[0], module.networking.vpc.public_subnets[1]]
   vpc            = module.networking.vpc.vpc_id
 }
-}
