@@ -14,7 +14,6 @@ module "vpc" {
 }
 
 
-### CHANGE SSH BACK WHEN YOU CREATE THE BASTION HOST!! 
 resource "aws_security_group" "jenkins-sg" {
   name        = "jenkins-sg-${var.repo-name}"
   description = "Allow jenkins traffic"

@@ -26,3 +26,12 @@ module "elastic-load-balancer" {
   subnet_id      = [module.networking.vpc.public_subnets[0], module.networking.vpc.public_subnets[1]]
   vpc            = module.networking.vpc.vpc_id
 }
+
+module "jenkins_node-asg" {
+  source         = "./modules/jenkins_nodes-asg" 
+  repo-name = var.repo-name
+#vpc_zone_identifier = module.networking.vpc.vpc_id
+subnet_id         = module.networking.vpc.public_subnets[0]
+security_group    = [module.networking.jenkins-sg.id]
+key_name          = module.key_gen.key_name
+}
