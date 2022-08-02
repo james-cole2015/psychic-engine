@@ -66,7 +66,7 @@ resource "aws_security_group" "jenkins-sg" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-ingress {
+  ingress {
     description = "jenkins traffic"
     from_port   = 8080
     to_port     = 8080
