@@ -21,7 +21,7 @@ variable "security_group" {
 variable "key_name" {
   type = any
 }
-
+/*
 variable "target_group_arns" {
   type = string
-}
+}*/

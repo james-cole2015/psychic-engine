@@ -45,7 +45,7 @@ resource "aws_autoscaling_group" "asg" {
   min_size            = 1
   max_size            = 2
   vpc_zone_identifier = [var.subnet_id]
-  target_group_arns   = [var.target_group_arns]
+  #target_group_arns   = [var.target_group_arns]
 
   lifecycle {
     create_before_destroy = true
