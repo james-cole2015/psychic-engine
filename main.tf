@@ -1,11 +1,11 @@
 module "jenkins_main-asg" {
-    source = "./modules/jenkins_main-asg"
-    repo-name = var.repo-name
-    #vpc_zone_identifier = module.networking.vpc.vpc_id
-    subnet_id         = module.networking.vpc.public_subnets[0]
-    security_group    = [module.networking.jenkins-sg.id]
-    key_name          = module.key_gen.key_name
-    target_group_arns = module.elastic-load-balancer.elb_id
+  source    = "./modules/jenkins_main-asg"
+  repo-name = var.repo-name
+  #vpc_zone_identifier = module.networking.vpc.vpc_id
+  subnet_id         = module.networking.vpc.public_subnets[0]
+  security_group    = [module.networking.jenkins-sg.id]
+  key_name          = module.key_gen.key_name
+  target_group_arns = module.elastic-load-balancer.elb_id
 }
 
 module "networking" {
@@ -28,10 +28,15 @@ module "elastic-load-balancer" {
 }
 
 module "jenkins_node-asg" {
-  source         = "./modules/jenkins_nodes-asg" 
+  source    = "./modules/jenkins_nodes-asg"
   repo-name = var.repo-name
-#vpc_zone_identifier = module.networking.vpc.vpc_id
-subnet_id         = module.networking.vpc.public_subnets[0]
-security_group    = [module.networking.jenkins-sg.id]
-key_name          = module.key_gen.key_name
+  #vpc_zone_identifier = module.networking.vpc.vpc_id
+  subnet_id      = module.networking.vpc.public_subnets[0]
+  security_group = [module.networking.jenkins-sg.id]
+  key_name       = module.key_gen.key_name
+}
+
+module "aws_data" {
+  source = "./modules/aws_data"
+  user-name = var.user-name
 }
