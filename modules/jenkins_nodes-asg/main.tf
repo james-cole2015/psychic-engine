@@ -33,7 +33,7 @@ resource "aws_launch_template" "jenkins_node-launch-template" {
       environment = "production"
       platform    = "terraform"
       user        = "AveryClark"
-      repo-name = "${var.repo-name}"
+      repo-name   = "${var.repo-name}"
     }
   }
 }
@@ -41,7 +41,7 @@ resource "aws_launch_template" "jenkins_node-launch-template" {
 
 ## Auto Scaling Groups
 resource "aws_autoscaling_group" "asg" {
-  name = "${var.repo-name}-jenkins_node-asg"
+  name                = "${var.repo-name}-jenkins_node-asg"
   min_size            = 2
   max_size            = 3
   vpc_zone_identifier = [var.subnet_id]
