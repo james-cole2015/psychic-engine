@@ -5,7 +5,9 @@ output "vpc" {
 output "jenkins-sg" {
   value = aws_security_group.jenkins-sg
 }
-
+output "jenkins-ssh-sg" {
+  value = aws_security_group.jenkins-ssh
+}
 output "vpc_zone_identifier" {
   value = module.vpc.vpc_id
 }
