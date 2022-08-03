@@ -29,7 +29,7 @@ resource "aws_launch_template" "jenkins_node-launch-template" {
     resource_type = "instance"
 
     tags = {
-      Name        = "Jenkins Node Controller"
+      Name        = "Jenkins Node"
       environment = "production"
       platform    = "terraform"
       user        = "AveryClark"
