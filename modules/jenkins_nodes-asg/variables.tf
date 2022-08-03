@@ -21,3 +21,7 @@ variable "security_group" {
 variable "key_name" {
   type = any
 }
+
+variable "image_id" {
+  type = any
+}
