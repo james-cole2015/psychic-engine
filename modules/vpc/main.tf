@@ -95,7 +95,7 @@ resource "aws_security_group" "jenkins-ssh" {
     security_groups = ["${aws_security_group.jenkins-sg.id}"]
   }
 
-    egress {
+  egress {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
