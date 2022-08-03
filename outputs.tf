@@ -13,3 +13,7 @@ output "iam-user-arn" {
 output "random_pet" {
   value = module.aws_data.petname.id
 }
+
+output "ami-id" {
+  value = module.aws_data.ami.id
+}
