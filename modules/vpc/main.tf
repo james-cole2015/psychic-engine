@@ -94,6 +94,11 @@ resource "aws_security_group" "jenkins-ssh" {
     protocol        = "tcp"
     security_groups = ["${aws_security_group.jenkins-sg.id}"]
   }
+  tags = {
+    Name        = "${var.repo-name}-ssh-SG"
+    repo-name   = "${var.repo-name}"
+    environment = "production"
+  }
 }
 
 data "http" "terraform_ip" {
