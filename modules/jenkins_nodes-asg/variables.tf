@@ -16,7 +16,7 @@ variable "subnet_id" {
 }
 
 variable "security_group" {
-  type = any
+  type = list
 }
 variable "key_name" {
   type = any
