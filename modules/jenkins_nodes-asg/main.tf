@@ -42,8 +42,9 @@ resource "aws_launch_template" "jenkins_node-launch-template" {
 ## Auto Scaling Groups
 resource "aws_autoscaling_group" "asg" {
   name                = "${var.repo-name}-jenkins_node-asg"
-  min_size            = 2
-  max_size            = 3
+  min_size            = 1
+  max_size            = 2
+  desired_capacity    = 1
   vpc_zone_identifier = [var.subnet_id]
 
   lifecycle {
