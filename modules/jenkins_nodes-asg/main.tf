@@ -1,4 +1,4 @@
-data "aws_ami" "ubuntu" {
+/*data "aws_ami" "ubuntu" {
   most_recent = true
   owners      = ["099720109477"]
 
@@ -6,7 +6,7 @@ data "aws_ami" "ubuntu" {
     name   = "architecture"
     values = ["x86_64"]
   }
-}
+}*/
 ## Jenkins Launch Template
 resource "aws_launch_template" "jenkins_node-launch-template" {
   name = "${var.repo-name}-jenkins_node-LT"
@@ -15,7 +15,7 @@ resource "aws_launch_template" "jenkins_node-launch-template" {
     cpu_credits = "standard"
   }
 
-  image_id      = data.aws_ami.ubuntu.id
+  image_id      = var.image_id
   instance_type = var.instance-type
   key_name      = var.key_name
   monitoring {
@@ -29,7 +29,7 @@ resource "aws_launch_template" "jenkins_node-launch-template" {
     resource_type = "instance"
 
     tags = {
-      Name        = "Jenkins Node Controller"
+      Name        = "Jenkins Node"
       environment = "production"
       platform    = "terraform"
       user        = "AveryClark"
@@ -42,8 +42,9 @@ resource "aws_launch_template" "jenkins_node-launch-template" {
 ## Auto Scaling Groups
 resource "aws_autoscaling_group" "asg" {
   name                = "${var.repo-name}-jenkins_node-asg"
-  min_size            = 2
-  max_size            = 3
+  min_size            = 1
+  max_size            = 2
+  desired_capacity    = 1
   vpc_zone_identifier = [var.subnet_id]
 
   lifecycle {

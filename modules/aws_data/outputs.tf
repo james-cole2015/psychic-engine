@@ -9,3 +9,7 @@ output "iam-user" {
 output "petname" {
   value = random_pet.test
 }
+
+output "ami" {
+  value = data.aws_ami.ubuntu
+}

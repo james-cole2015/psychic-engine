@@ -16,8 +16,12 @@ variable "subnet_id" {
 }
 
 variable "security_group" {
-  type = any
+  type = list(any)
 }
 variable "key_name" {
+  type = any
+}
+
+variable "image_id" {
   type = any
 }
