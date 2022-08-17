@@ -17,3 +17,7 @@ output "random_pet" {
 output "ami-id" {
   value = module.aws_data.ami.id
 }
+
+output "availability-zones" {
+value = data.aws_availability_zones.zones.names 
+}
