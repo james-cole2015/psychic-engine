@@ -11,6 +11,7 @@ module "jenkins_main-asg" {
 module "networking" {
   source    = "./modules/vpc"
   repo-name = var.repo-name
+  azs       = module.aws_data.az_names.names
 }
 
 
@@ -42,4 +43,4 @@ module "aws_data" {
   user-name = var.user-name
 }
 
-data "aws_availability_zones" "zones" {}
+

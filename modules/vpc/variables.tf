@@ -21,3 +21,7 @@ variable "vpc_name" {
 variable "repo-name" {
   type = string
 }
+
+variable "azs" {
+  type = any
+}
