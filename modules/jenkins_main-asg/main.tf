@@ -18,10 +18,6 @@ resource "aws_launch_template" "jenkins_main-launch-template" {
 
     tags = {
       Name        = "Jenkins Main Controller"
-      environment = "production"
-      platform    = "terraform"
-      user        = "AveryClark"
-      repo-name   = "${var.repo-name}"
     }
   }
 }

@@ -19,10 +19,6 @@ resource "aws_launch_template" "jenkins_node-launch-template" {
 
     tags = {
       Name        = "Jenkins Node"
-      environment = "production"
-      platform    = "terraform"
-      user        = "AveryClark"
-      repo-name   = "${var.repo-name}"
     }
   }
 }

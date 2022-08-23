@@ -5,12 +5,6 @@ resource "aws_lb" "lu-alb" {
   load_balancer_type = "application"
   security_groups    = var.security_group
   subnets            = var.subnet_id
-
-  tags = {
-    environment = "dev"
-    repo-name   = "${var.repo-name}"
-    platform    = "terraform"
-  }
 }
 
 ## load balancer target group
