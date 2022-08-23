@@ -1,7 +1,6 @@
 module "jenkins_main-asg" {
   source    = "./modules/jenkins_main-asg"
   repo-name = var.repo-name
-  #vpc_zone_identifier = module.networking.vpc.vpc_id
   subnet_id      = module.networking.vpc.public_subnets[0]
   security_group = [module.networking.jenkins-sg.id]
   key_name       = module.key_gen.key_name
