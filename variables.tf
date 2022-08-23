@@ -8,7 +8,9 @@ variable "region" {
   default = "us-east-1"
 }
 
+/*
 variable "user-name" {
   type    = string
   default = "AveryClark"
 }
+*/
