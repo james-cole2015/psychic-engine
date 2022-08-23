@@ -21,12 +21,3 @@ variable "vpc_name" {
 variable "repo-name" {
   type = string
 }
-
-/*
-variable "ec2_node_cidr" {
-  type = list(string)
-}
-output "bastion-host-sg" {
-  value = aws_security_group.bastion-host-sg
-}
-*/

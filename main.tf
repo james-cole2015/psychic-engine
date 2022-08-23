@@ -19,6 +19,7 @@ module "key_gen" {
   repo-name = var.repo-name
 }
 
+### Not Removing bc I might want it later ### 
 /*module "elastic-load-balancer" {
   source         = "./modules/load-balancer"
   repo-name      = var.repo-name
@@ -30,7 +31,6 @@ module "key_gen" {
 module "jenkins_node-asg" {
   source    = "./modules/jenkins_nodes-asg"
   repo-name = var.repo-name
-  #vpc_zone_identifier = module.networking.vpc.vpc_id
   subnet_id      = module.networking.vpc.public_subnets[0]
   security_group = [module.networking.jenkins-sg.id, module.networking.jenkins-ssh-sg.id]
   key_name       = module.key_gen.key_name

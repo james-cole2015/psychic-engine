@@ -1,12 +1,4 @@
-/*data "aws_ami" "ubuntu" {
-  most_recent = true
-  owners      = ["099720109477"]
 
-  filter {
-    name   = "architecture"
-    values = ["x86_64"]
-  }
-}*/
 ## Jenkins Launch Template
 resource "aws_launch_template" "jenkins_node-launch-template" {
   name = "${var.repo-name}-jenkins_node-LT"

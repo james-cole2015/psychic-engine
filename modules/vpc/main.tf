@@ -9,7 +9,6 @@ module "vpc" {
   public_subnets               = var.public_sn
   create_igw                   = true
   create_database_subnet_group = true
-  #enable_nat_gateway           = true
   single_nat_gateway = true
 }
 
