@@ -1,0 +1,26 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "Statement1",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "${aws_s3_bucket.bucket01.arn}"
+            },
+            "Action": "s3:ListBucket",
+            "Resource": "${aws_s3_bucket.bucket01.arn}"
+        },
+        {
+            "Sid": "Statement2",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "${aws_s3_bucket.bucket01.arn}"
+            },
+            "Action": [
+                "s3:GetObject",
+                "s3:PutObject"
+            ],
+            "Resource": "${aws_s3_bucket.bucket01.arn}/*"
+        }
+    ]
+}

@@ -1,12 +1,3 @@
-/*data "aws_ami" "ubuntu" {
-  most_recent = true
-  owners      = ["099720109477"]
-
-  filter {
-    name   = "architecture"
-    values = ["x86_64"]
-  }
-}*/
 ## Jenkins Launch Template
 resource "aws_launch_template" "jenkins_main-launch-template" {
   name = "${var.repo-name}-jenkins_main-LT"
@@ -18,9 +9,6 @@ resource "aws_launch_template" "jenkins_main-launch-template" {
   image_id      = var.image_id
   instance_type = var.instance-type
   key_name      = var.key_name
-  monitoring {
-    enabled = true
-  }
   vpc_security_group_ids = var.security_group
 
   user_data = filebase64("jenkins-boot.sh")
@@ -45,7 +33,6 @@ resource "aws_autoscaling_group" "asg" {
   min_size            = 1
   max_size            = 2
   vpc_zone_identifier = [var.subnet_id]
-  #target_group_arns   = [var.target_group_arns]
 
   lifecycle {
     create_before_destroy = true

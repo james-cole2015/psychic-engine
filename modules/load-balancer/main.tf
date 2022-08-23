@@ -6,8 +6,6 @@ resource "aws_lb" "lu-alb" {
   security_groups    = var.security_group
   subnets            = var.subnet_id
 
-  #enable_delete_protection = true
-
   tags = {
     environment = "dev"
     repo-name   = "${var.repo-name}"
@@ -22,14 +20,6 @@ resource "aws_lb_target_group" "lu-target-group" {
   protocol = "HTTP"
   vpc_id   = var.vpc
 }
-
-/*## load balancer attachment to target group
-resource "aws_lb_target_group_attachment" "lu-tg-attachment" {
-  target_group_arn = aws_lb_target_group.lu-target-group.arn
-  target_id = aws_lb.lu-alb.arn
-  port = 80
-}*/
-
 
 ## load balancer listener 
 resource "aws_lb_listener" "lu-alb" {

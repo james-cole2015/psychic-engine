@@ -22,11 +22,6 @@ variable "repo-name" {
   type = string
 }
 
-/*
-variable "ec2_node_cidr" {
-  type = list(string)
+variable "azs" {
+  type = any
 }
-output "bastion-host-sg" {
-  value = aws_security_group.bastion-host-sg
-}
-*/

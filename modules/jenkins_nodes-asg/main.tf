@@ -1,12 +1,4 @@
-/*data "aws_ami" "ubuntu" {
-  most_recent = true
-  owners      = ["099720109477"]
 
-  filter {
-    name   = "architecture"
-    values = ["x86_64"]
-  }
-}*/
 ## Jenkins Launch Template
 resource "aws_launch_template" "jenkins_node-launch-template" {
   name = "${var.repo-name}-jenkins_node-LT"
@@ -18,9 +10,6 @@ resource "aws_launch_template" "jenkins_node-launch-template" {
   image_id      = var.image_id
   instance_type = var.instance-type
   key_name      = var.key_name
-  monitoring {
-    enabled = true
-  }
   vpc_security_group_ids = var.security_group
 
   user_data = filebase64("jenkins-boot.sh")
