@@ -22,6 +22,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "plex_ams_key" {
     apply_server_side_encryption_by_default {
       kms_master_key_id = var.plex_s3_key
       sse_algorithm     = "aws:kms"
+      bucket_key_enabled = true 
     }
   }
 }
