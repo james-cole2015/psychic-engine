@@ -34,3 +34,27 @@ resource "aws_s3_bucket_public_access_block" "plex_block_pub" {
   ignore_public_acls      = true
   restrict_public_buckets = true
 }
+
+resource "aws_s3_bucket_policy" "plex-policy" {
+  bucket = aws_s3_bucket.plex_storage.id
+  policy = data.aws_iam_policy_document.plex_policy.json 
+}
+
+data "aws_iam_policy_document" "plex_policy" {
+  statement {
+    principals {
+      type = "AWS"
+      identifiers = ["arn:aws:iam::835867269469:user/AveryClark"]
+    }
+    actions = [
+      "s3:GetObject",
+      "s3:PutObject",
+      "s3:ListBucket"
+    ]
+    resources = [
+      "${aws_s3_bucket.plex_storage.arn}/*",
+      aws_s3_bucket.plex_storage.arn
+    ]
+  }
+}
+
