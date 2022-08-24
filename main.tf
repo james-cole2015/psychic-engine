@@ -41,4 +41,10 @@ module "aws_data" {
   source    = "./modules/aws_data"
 }
 
+module "s3_plex_storage" {
+  source = "./modules/s3_storage"
+  plex_s3_key = module.key_gen.plex_s3_key.id
+  repo-name = var.repo-name
+  identifier = module.aws_data.random_number.result 
+}
 
