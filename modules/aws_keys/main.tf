@@ -16,3 +16,7 @@ resource "local_file" "created_keypair_to_local" {
   file_permission = "400"
   filename        = "${module.key_pair.key_pair_name}.pem"
 }
+
+resource "aws_kms_key" "plex_key" {
+  description             = "This key is used to encrypt bucket objects"
+}
