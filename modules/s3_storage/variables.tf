@@ -1,11 +1,11 @@
 variable "plex_s3_key" {
-    type = string
+  type = string
 }
 
 variable "identifier" {
-    type = string
+  type = string
 }
 
 variable "repo-name" {
-    type = string
+  type = string
 }

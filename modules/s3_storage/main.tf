@@ -20,9 +20,9 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "plex_ams_key" {
 
   rule {
     apply_server_side_encryption_by_default {
-      kms_master_key_id = var.plex_s3_key
-      sse_algorithm     = "aws:kms"
-      bucket_key_enabled = true 
+      kms_master_key_id  = var.plex_s3_key
+      sse_algorithm      = "aws:kms"
+      bucket_key_enabled = true
     }
   }
 }
@@ -38,13 +38,13 @@ resource "aws_s3_bucket_public_access_block" "plex_block_pub" {
 
 resource "aws_s3_bucket_policy" "plex-policy" {
   bucket = aws_s3_bucket.plex_storage.id
-  policy = data.aws_iam_policy_document.plex_policy.json 
+  policy = data.aws_iam_policy_document.plex_policy.json
 }
 
 data "aws_iam_policy_document" "plex_policy" {
   statement {
     principals {
-      type = "AWS"
+      type        = "AWS"
       identifiers = ["arn:aws:iam::835867269469:user/AveryClark"]
     }
     actions = [

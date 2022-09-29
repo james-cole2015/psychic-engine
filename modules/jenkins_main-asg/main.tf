@@ -6,9 +6,9 @@ resource "aws_launch_template" "jenkins_main-launch-template" {
     cpu_credits = "standard"
   }
 
-  image_id      = var.image_id
-  instance_type = var.instance-type
-  key_name      = var.key_name
+  image_id               = var.image_id
+  instance_type          = var.instance-type
+  key_name               = var.key_name
   vpc_security_group_ids = var.security_group
 
   user_data = filebase64("jenkins-boot.sh")
@@ -17,7 +17,7 @@ resource "aws_launch_template" "jenkins_main-launch-template" {
     resource_type = "instance"
 
     tags = {
-      Name        = "Jenkins Main Controller"
+      Name = "Jenkins Main Controller"
     }
   }
 }

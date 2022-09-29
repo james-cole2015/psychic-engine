@@ -18,5 +18,5 @@ resource "local_file" "created_keypair_to_local" {
 }
 
 resource "aws_kms_key" "plex_key" {
-  description             = "This key is used to encrypt bucket objects"
+  description = "This key is used to encrypt bucket objects"
 }

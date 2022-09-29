@@ -25,7 +25,7 @@ provider "aws" {
   default_tags {
     tags = {
       environment = "production"
-      platform    = "terraform" 
+      platform    = "terraform"
       repo-name   = "${var.repo-name}"
     }
   }

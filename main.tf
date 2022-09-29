@@ -1,6 +1,6 @@
 module "jenkins_main-asg" {
-  source    = "./modules/jenkins_main-asg"
-  repo-name = var.repo-name
+  source         = "./modules/jenkins_main-asg"
+  repo-name      = var.repo-name
   subnet_id      = module.networking.vpc.public_subnets[0]
   security_group = [module.networking.jenkins-sg.id]
   key_name       = module.key_gen.key_name
@@ -29,8 +29,8 @@ module "key_gen" {
 }*/
 
 module "jenkins_node-asg" {
-  source    = "./modules/jenkins_nodes-asg"
-  repo-name = var.repo-name
+  source         = "./modules/jenkins_nodes-asg"
+  repo-name      = var.repo-name
   subnet_id      = module.networking.vpc.public_subnets[0]
   security_group = [module.networking.jenkins-sg.id, module.networking.jenkins-ssh-sg.id]
   key_name       = module.key_gen.key_name
@@ -38,7 +38,7 @@ module "jenkins_node-asg" {
 }
 
 module "aws_data" {
-  source    = "./modules/aws_data"
+  source = "./modules/aws_data"
 }
 
 
