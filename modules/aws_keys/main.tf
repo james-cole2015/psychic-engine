@@ -12,11 +12,30 @@ module "key_pair" {
 }
 
 resource "local_file" "created_keypair_to_local" {
-  content         = tls_private_key.rsa.private_key_pem
+  content         = tls_private_key.rsa.private_key_openssh
   file_permission = "400"
   filename        = "${module.key_pair.key_pair_name}.pem"
 }
 
 resource "aws_kms_key" "plex_key" {
   description = "This key is used to encrypt bucket objects"
+}
+
+resource "aws_secretsmanager_secret" "private-key" {
+    name = "${var.repo-name}-private-key"
+}
+
+resource "aws_secretsmanager_secret" "public-key" {
+    name = "${var.repo-name}-public-key"
+}
+
+
+resource "aws_secretsmanager_secret_version" "keypair" {
+    secret_id = aws_secretsmanager_secret.private-key.id
+    secret_string = "${tls_private_key.rsa.private_key_openssh}"
+}
+
+resource "aws_secretsmanager_secret_version" "pub_keypair" {
+  secret_id = aws_secretsmanager_secret.public-key.id
+  secret_string = "${tls_private_key.rsa.public_key_openssh}"
 }
