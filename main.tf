@@ -42,3 +42,18 @@ module "aws_data" {
 }
 
 
+module "s3_storage" {
+  source = "terraform-aws-modules/s3-bucket/aws"
+  bucket = "${var.repo-name}-backend-${module.aws_data.random_number.result}"
+  versioning = {
+    enabled = true
+  }
+  server_side_encryption_configuration = {
+    rule = {
+      apply_server_side_encryption_by_default = {
+        kms_master_key_id = "${module.key_gen.s3_key.id}"
+        sse_algorithm = "aws:kms"
+      }
+    }
+  }
+}
