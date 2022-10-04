@@ -41,6 +41,12 @@ module "aws_data" {
   source = "./modules/aws_data"
 }
 
+module "iam_module" {
+  source = "./modules/iam"
+  identifer = module.aws_data.random_number.result
+  repo-name = var.repo-name 
+}
+
 
 module "s3_storage" {
   source = "terraform-aws-modules/s3-bucket/aws"
