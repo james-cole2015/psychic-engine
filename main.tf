@@ -17,6 +17,7 @@ module "networking" {
 module "key_gen" {
   source    = "./modules/aws_keys"
   repo-name = var.repo-name
+  random_number = module.aws_data.random_number.result
 }
 
 ### Not Removing bc I might want it later ### 
@@ -47,7 +48,7 @@ module "iam_module" {
   repo-name = var.repo-name 
 }
 
-
+/*
 module "s3_storage" {
   source = "terraform-aws-modules/s3-bucket/aws"
   bucket = "${var.repo-name}-backend-${module.aws_data.random_number.result}"
@@ -62,4 +63,4 @@ module "s3_storage" {
       }
     }
   }
-}
+}*/

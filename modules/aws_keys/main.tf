@@ -17,16 +17,13 @@ resource "local_file" "created_keypair_to_local" {
   filename        = "${module.key_pair.key_pair_name}.pem"
 }
 
-resource "aws_kms_key" "plex_key" {
-  description = "This key is used to encrypt bucket objects"
-}
 
 resource "aws_secretsmanager_secret" "private-key" {
-    name = "${var.repo-name}-private-key"
+    name = "${var.repo-name}-${var.random_number}-private-key"
 }
 
 resource "aws_secretsmanager_secret" "public-key" {
-    name = "${var.repo-name}-public-key"
+    name = "${var.repo-name}-${var.random_number}-public-key"
 }
 
 
