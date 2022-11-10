@@ -1,5 +1,6 @@
 ## s3 backend bucket policy
 
+/*
 resource "aws_s3_bucket_policy" "backend-policy" {
     bucket = "${var.repo-name}-backend-${var.identifer}"
     policy = <<EOT
@@ -28,4 +29,4 @@ resource "aws_s3_bucket_policy" "backend-policy" {
     ]
 }
 EOT
-}
+}*/
